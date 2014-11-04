@@ -33,7 +33,7 @@ public class ZhibiaoQueryHandler extends Handler
 			return ResponseBuilder.build(ErrorMessage.getErrorDefine("zb.emptyTime", normalZb));
 
 		FayuanParser fp = new FayuanParser();
-		String normalFy = fp.parse(_combString);
+		String normalFy = fp.parseFayuan(_combString);
 		
 		if(fp.hasError())
 			return fp.getErrorResponse();
@@ -51,6 +51,8 @@ public class ZhibiaoQueryHandler extends Handler
 	{
 		_logger.debug(_combString);
 		String tmstr = BizServiceClient.getInstance().parseReportQueryTimeString(_combString);
+		if(tmstr == null)
+			return BizServiceClient.getInstance().getCurrentYearReportPeriod();
 		ReportPeriod rp = BizServiceClient.getInstance().transReportQueryTimeStringToPeriod(tmstr);
 		return rp;
 	}

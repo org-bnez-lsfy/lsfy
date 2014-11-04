@@ -7,6 +7,7 @@ import org.bnez.lsfy.service.BizServiceClient;
 import org.bnez.lsfy.service.ReportPeriod;
 import org.bnez.nlp.serv.rmi.NlpServiceClient;
 import org.bnez.xiaoyue.lsfy.XiaoyueResponse;
+import org.bnez.xiaoyue.lsfy.rsp.FayuanParser;
 import org.bnez.xiaoyue.lsfy.rsp.ZhibiaoQuery;
 
 public class NlpHandler
@@ -37,10 +38,20 @@ public class NlpHandler
 			if(cmd.equals("zhibiao_query"))
 			{
 				String zb = json.getString("zhibiao");
+				
 				String fy = json.getString("fayuan");
+				FayuanParser fp = new FayuanParser();
+				String fayuan = fp.normalizeFayuan(fy);
+				if(fp.hasError())
+					return fp.getErrorResponse();
+				
 				String tm = json.getString("time");
-				ReportPeriod rp = BizServiceClient.getInstance().transReportQueryTimeStringToPeriod(tm);
-				return new ZhibiaoQuery(zb, fy, rp).query();
+				ReportPeriod rp = null;
+				if(tm == null || tm.length() == 0)
+					rp = BizServiceClient.getInstance().getCurrentYearReportPeriod();
+				else
+					rp = BizServiceClient.getInstance().transReportQueryTimeStringToPeriod(tm);
+				return new ZhibiaoQuery(zb, fayuan, rp).query();
 			}
 		} catch (Exception e)
 		{

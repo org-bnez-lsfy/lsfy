@@ -70,7 +70,7 @@ public class ZhibiaoMoreHandler extends Handler
 
 	private XiaoyueResponse handleZhuiwenFy(ZhibiaoContext c)
 	{
-		String fy = new FayuanParser().parse(_combString);
+		String fy = new FayuanParser().parseFayuan(_combString);
 		String normalFy = BizServiceClient.getInstance().parseReportQueryFayuanName(fy);
 		if (normalFy.equals(c.getFayuan()))
 			return ResponseBuilder.build("您刚才问的就是" + normalFy);

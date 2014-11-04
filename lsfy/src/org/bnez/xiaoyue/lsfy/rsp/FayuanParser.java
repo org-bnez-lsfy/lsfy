@@ -13,10 +13,14 @@ public class FayuanParser
 	private boolean _hasError = false;
 	private XiaoyueResponse _response = null;
 
-	public String parse(String someString)
+	public String parseFayuan(String someString)
 	{
 		String fy = pickFayuan(someString);
+		return normalizeFayuan(fy);
+	}
 
+	public String normalizeFayuan(String fy)
+	{
 		if (fy == null)
 		{
 			User u = XiaoyueContext.getCurrentThreadUser();
@@ -30,9 +34,7 @@ public class FayuanParser
 			fy = fydb.getRptName();
 		}
 
-		String normalFy = fy;
-
-		if (normalFy.equals("本院"))
+		if (fy != null && fy.equals("本院"))
 		{
 			User u = XiaoyueContext.getCurrentThreadUser();
 			if (u == null)
@@ -48,9 +50,9 @@ public class FayuanParser
 				return null;
 			}
 
-			normalFy = fydb.getRptName();
+			fy = fydb.getRptName();
 		}
-		return normalFy;
+		return fy;
 	}
 
 	private void setError(XiaoyueResponse response)
@@ -76,8 +78,8 @@ public class FayuanParser
 
 	public static void main(String[] args)
 	{
-		System.out.println(new FayuanParser().parse("今年全省基层的结案率是多少"));
-		System.out.println(new FayuanParser().parse("今年全省结案率是多少"));
-		System.out.println(new FayuanParser().parse("今年本院的结案率是多少"));
+		System.out.println(new FayuanParser().parseFayuan("今年全省基层的结案率是多少"));
+		System.out.println(new FayuanParser().parseFayuan("今年全省结案率是多少"));
+		System.out.println(new FayuanParser().parseFayuan("今年本院的结案率是多少"));
 	}
 }
