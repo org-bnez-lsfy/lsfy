@@ -41,16 +41,11 @@ public class ZhibiaoOnSelect implements ReportJob
 		{
 			if (rpt.equals("5.3执行调研数据"))
 				_condition.setZb("执行" + _condition.getZhibiao());
-			if (rpt.equals("5.8执行调研数据（地市）"))
-				_condition.setZb("地市执行" + _condition.getZhibiao());
-			
 		}
 		if (zhibiao.equals("人均结案数") || zhibiao.equals("月均存案工作量"))
 		{
 			if (rpt.equals("5.2执行评估数据"))
 				_condition.setZb("执行" + _condition.getZhibiao());
-			if (rpt.equals("5.7执行评估数据（地市）"))
-				_condition.setZb("地市执行" + _condition.getZhibiao());
 		}
 		if (zhibiao.equals("法定（正常）审限内结案率"))
 			_condition.setZb("法定正常审限内结案率");
@@ -70,13 +65,7 @@ public class ZhibiaoOnSelect implements ReportJob
 		HibernateUtil.currentSession();
 		if (datas.size() > 0)
 		{
-			if (rpt.equals("首页-中院")){
-				String[] zb = { "全市收案数", "全市结案数", "全市未结案数" };
-				for (int i = 0; i < zb.length; i++)
-					_db.delete(_condition.getFrom(), _condition.getTo(), zb[i]);
-			}else{
-				_db.delete(_condition.getFrom(), _condition.getTo(), _condition.getZb());
-			}
+		    _db.delete(_condition.getFrom(), _condition.getTo(), _condition.getZb());			
 			_db.save(datas);
 		}
 		HibernateUtil.closeSession();
@@ -146,34 +135,6 @@ public class ZhibiaoOnSelect implements ReportJob
 				}
 				j = cos + j;
 			}
-		} else if (condition.getType() == 2)
-		{
-			String[] zhibiao = { "全市收案数", "全市结案数", "全市未结案数" };
-			Integer count = 1;
-			for (int i = 0; i < zhibiao.length; i++)
-			{
-				List<String> recordQS = result.get(20);
-				ReportData data = new ReportData();
-				data.setZhibiao(zhibiao[i]);
-				data.setFrom(condition.getFrom());
-				data.setTo(condition.getTo());
-				data.setValue(recordQS.get(count));
-				data.setTongbi(recordQS.get(count + 1));
-				Integer order = null;
-				try
-				{
-					order = Integer.parseInt(recordQS.get(0));
-				} catch (Exception e)
-				{
-				}
-				data.setPaimingQuansheng(order);
-				data.setCondition(condition.toJson());
-				data.setInsertAt(new Date());
-				handleDualZhibiao(condition, data);
-				datas.add(data);
-				count = count + 2 * (i + 1);
-			}
-
 		} else
 		{
 			for (int i = 0; i < result.size(); i++)
@@ -215,15 +176,11 @@ public class ZhibiaoOnSelect implements ReportJob
 		{
 			if (rpt.equals("5.3执行调研数据"))
 				data.setZhibiao("执行" + data.getZhibiao());
-			if (rpt.equals("5.8执行调研数据（地市）"))
-				data.setZhibiao("地市执行" + data.getZhibiao());
 		}
 		if (zhibiao.equals("人均结案数") || zhibiao.equals("月均存案工作量"))
 		{
 			if (rpt.equals("5.2执行评估数据"))
 				data.setZhibiao("执行" + data.getZhibiao());
-			if (rpt.equals("5.7执行评估数据（地市）"))
-				data.setZhibiao("地市执行" + data.getZhibiao());
 		}
 		if (zhibiao.equals("法定（正常）审限内结案率"))
 			data.setZhibiao("法定正常审限内结案率");
