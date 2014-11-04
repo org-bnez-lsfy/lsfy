@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-access="field">
+	<class name="org.bnez.xiaoyue.lsfy.db.Jingtai" table="tbl_jingtai">
+		<id name="id" column="id" type="long">
+			<generator class="native"></generator>
+		</id>
+		<property name="combName" column="comb_name"></property>
+		<property name="combText" column="comb_text"></property>
+		<property name="answer"></property>
+		<property name="url"></property>
+		<property name="createAt" column="create_at"></property>
+	</class>
+</hibernate-mapping>

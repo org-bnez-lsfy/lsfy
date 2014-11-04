@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-access="field">
+	<class name="org.bnez.xiaoyue.lsfy.server.Trace" table="tbl_trace">
+		<id name="id" column="id" type="long">
+			<generator class="native"></generator>
+		</id>
+		<property name="received"></property>
+		<property name="response"></property>
+		<property name="ip"></property>
+		<property name="tu"></property>
+		<property name="createAt" column="create_at"></property>
+	</class>
+</hibernate-mapping>

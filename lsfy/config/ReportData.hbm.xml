@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-access="field">
+	<class name="org.bnez.xiaoyue.lsfy.db.ReportData" table="tbl_zhibiao_2014_05">
+		<id name="id" column="id" type="long">
+			<generator class="native"></generator>
+		</id>
+		<property name="zhibiao"></property>
+		<property name="koujing1"></property>
+		<property name="koujing2"></property>
+		<property name="koujing3"></property>
+		<property name="koujing4"></property>
+		<property name="from"></property>
+		<property name="to"></property>
+		<property name="value"></property>
+		<property name="tongbi"></property>
+		<property name="huanbi"></property>
+		<property name="paimingQuansheng" column="paiming_quansheng"></property>
+		<property name="paimingZhongyuan" column="paiming_zhongyuan"></property>
+		<property name="paimingJichen" column="paiming_jichen"></property>
+		<property name="condition"></property>
+		<property name="insertAt" column="insert_at"></property>
+	</class>
+</hibernate-mapping>

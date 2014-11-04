@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="dialect">org.hibernate.dialect.MySQLDialect </property>
+		<property name="show_sql">true</property>
+
+		<property name="proxool.pool_alias">pool-one</property>
+		<property name="proxool.properties">pool-one.properties</property>
+		<property name="connection.provider_class">org.hibernate.service.jdbc.connections.internal.ProxoolConnectionProvider</property>
+		<property name="connection.autocommit">false</property>
+		<property name="connection.release_mode">auto</property>
+		
+		<mapping resource="ReportData.hbm.xml" />
+		<mapping resource="Jingtai.hbm.xml"/>
+		<mapping resource="Trace.hbm.xml"/>
+		<mapping resource="Xiaci.hbm.xml"/>
+		<mapping resource="User.hbm.xml"/>
+		<mapping resource="Rule.hbm.xml"/>
+		
+		<!-- lsfy-biz -->
+		<mapping resource="org/bnez/lsfy/domain/Fayuan.hbm.xml" />
+		<mapping resource="org/bnez/lsfy/domain/Zhibiao.hbm.xml" />
+		<mapping resource="org/bnez/lsfy/domain/Heliqujian.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>

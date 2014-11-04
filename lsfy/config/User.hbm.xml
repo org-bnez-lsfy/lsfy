@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-access="field">
+	<class name="org.bnez.xiaoyue.lsfy.db.User" table="tbl_user">
+		<id name="id" column="id" type="long">
+			<generator class="native"></generator>
+		</id>
+		<property name="name" column="name"></property>
+		<property name="fayuanId" column="fayuan_id"></property>
+		<property name="ip"></property>
+		<property name="cardId" column="card_id"></property>
+		<property name="deviceId" column="device_id"></property>
+		<property name="rule"></property>
+	</class>
+</hibernate-mapping>

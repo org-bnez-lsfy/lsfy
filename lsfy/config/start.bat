@@ -1,0 +1,1 @@
+java -Djava.ext.dirs=E:\projects\xiaoyue\lsfy\lib -cp E:\projects\xiaoyue\lsfy\bin org.bnez.xiaoyue.lsfy.Entry

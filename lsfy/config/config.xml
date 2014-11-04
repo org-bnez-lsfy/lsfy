@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+	<lsner>
+		<port>20000</port>
+	</lsner>
+	<seg>
+		<ip>203.150.144.89</ip>
+	</seg>
+	<nlp>
+		<ip>203.150.144.89</ip>
+		<ip1>localhost</ip1>
+		<port>20001</port>
+	</nlp>
+	<url>
+		<openVideo><![CDATA[http://203.150.144.89:8080/lsfy/inputAh.jsp?act=openVideo]]></openVideo>
+		<openDangan><![CDATA[http://203.150.144.89:8080/lsfy/inputAh.jsp?act=openDangan]]></openDangan>
+		<openAnjian><![CDATA[http://203.150.144.89:8080/lsfy/inputAh.jsp?act=openAnjian]]></openAnjian>
+		<xiaciJichen><![CDATA[http://203.150.144.89:8080/lsfy/xiaci!list.so?fyId=%d]]></xiaciJichen>
+		<xiaciZhongyuan><![CDATA[http://203.150.144.89:8080/lsfy/xiaci!zhongyuanList.so]]></xiaciZhongyuan>
+		<xiaciMine><![CDATA[http://203.150.144.89:8080/lsfy/xiaci!myList.so?year=%s&fyId=%d]]></xiaciMine>
+		<xiaciAll><![CDATA[http://203.150.144.89:8080/lsfy/xiaci!allList.so?year=%s]]></xiaciAll>
+		<zhibiao><![CDATA[http://203.150.144.89:8080/lsfy/zhibiao!query.so?id=%d&fyId=%d&from=%s&to=%s]]></zhibiao>
+	</url>
+	<idcard>
+		<check>0</check>
+		<path>F:\lsfy\读卡器\网络读卡器工具_跨网关\网络读卡器工具_跨网关\读卡记录</path>
+		<df>yyyy-MM-dd HH:mm:ss</df>
+		<timeout>30</timeout>
+	</idcard>
+	<faced>
+		<check>0</check>
+		<idmap>1,2|2,4</idmap>
+		<ip>localhost</ip>
+		<port>20003</port>
+		<diff>2</diff>
+	</faced>
+	<human>
+		<use>1</use>
+		<port>20004</port>
+	</human>
+	<report>
+		<checkExists>1</checkExists>
+		<threads>3</threads>
+		<buildOld>false</buildOld>
+	</report>
+	<job>
+		<idCard><![CDATA[0/1 * * * * ?]]></idCard>
+		<report><![CDATA[0 5 12 1-10\,26\,27\,28\,29\,30\,31 * ?]]></report>
+		<xiaci><![CDATA[0 5 0 * * ?]]></xiaci>
+	</job>
+	<error>
+		<combNotFound>尚不清楚您的问题，已经转人工坐席</combNotFound>
+		<nlpNull1>尚不清楚您的问题，已经转人工坐席</nlpNull1>
+		<nlpNull>收到新类型询问，分析中，请稍候。</nlpNull>
+		<zb>
+			<unknownZhibiao>您要询问的是什么指标的数据？</unknownZhibiao>
+			<unknownFayuan>您要询问哪个法院的%s？</unknownFayuan>
+			<emptyTime>您要询问在什么时间段的%s？</emptyTime>
+			<unknownTimeTag>不支持对时间段“%s”的指标查询</unknownTimeTag>
+			<notFound>没有找到%s到%s，%s的%s的数据</notFound>
+			<tongbiNotFound>没有找到%s的同比数据</tongbiNotFound>
+			<noHeliqujianDefined>指标%s没有定义合理区间</noHeliqujianDefined>
+		</zb>
+		<jt>
+			<notFound>尚不清楚您的问题，已经转人工坐席</notFound>
+		</jt>
+	</error>
+</config>
